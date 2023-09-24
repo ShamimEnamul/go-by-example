@@ -1,4 +1,4 @@
-package go_module
+package module
 
 func hello() string {
 	return "hello, world!"
