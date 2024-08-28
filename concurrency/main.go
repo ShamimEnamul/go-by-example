@@ -1,1 +1,11 @@
-package concurrency
+package main
+
+import (
+	"fmt"
+	"runtime"
+)
+
+func main() {
+	fmt.Println(runtime.NumCPU())
+	example2()
+}
