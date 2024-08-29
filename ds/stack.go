@@ -1,32 +1,24 @@
 package main
 
-import "fmt"
-
 type Stack []int
 type a struct {
 	ss int
 }
 
-func (s *Stack) Push(int val) {
-	s = append(*s, val)
-	fmt.Println(s)
-
-	//p := a{
-	//	ss: 10,
-	//}
-	//l := &p
-	//(*l).ss = 100
-
+func (s *Stack) Push(val int) {
+	*s = append(*s, val)
 }
 
-func Pop() {
-
+func (s *Stack) Pop() {
+	if len(*s) > 0 {
+		*s = (*s)[:len(*s)-1]
+	}
 }
 
-func Peek() {
-
+func (s *Stack) Peek() int {
+	return (*s)[len(*s)-1]
 }
 
-func Empty() bool {
-	return false
+func (s *Stack) Empty() bool {
+	return len(*s) == 0
 }

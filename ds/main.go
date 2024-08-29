@@ -3,10 +3,20 @@ package main
 import "fmt"
 
 func main() {
-	var arr [10]int
+	stack := Stack{}
+	stack.Push(1)
+	stack.Push(2)
+	stack.Push(3)
+	fmt.Println(stack)
 
-	arr[0] = 1
-	//arr[100000000] = 10
-	fmt.Println(len(arr), arr)
+	// pop
+	stack.Pop()
+	stack.Pop()
+	fmt.Println(stack)
 
+	// check empty
+	fmt.Println(stack.Empty())
+
+	// check peek
+	fmt.Println(stack.Peek())
 }
