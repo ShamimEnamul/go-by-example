@@ -1,3 +1,19 @@
+### Concurrency
+__When a Go program starts, it is allocated Logical Processors (P), which are software constructs managed by Go's runtime to execute Go routines. Here's a breakdown of the explanation:__
+
+**Logical Processor (P):** This is a virtual processor created by the Go runtime to manage concurrency. Each P can run one Go routine at a time.
+
+**Virtual Core:** In this context, a virtual core refers to how the operating system presents CPU resources to programs. Each physical CPU core might have multiple hardware threads (as in Hyper-Threading, where one physical core can execute multiple threads in parallel). The operating system treats each of these threads as a separate virtual core.
+
+**Multiple Hardware Threads (Hyper-Threading):** If your processor supports Hyper-Threading, it means each physical core can run more than one thread at a time (often two). These hardware threads are treated by Go as virtual cores.
+
+**Go Program and Virtual Cores:** Go's runtime assigns a logical processor (P) to each virtual core. For example, if your system has 4 physical cores with Hyper-Threading enabled (2 threads per core), your Go program will see and use 8 virtual cores.
+
+
+
+
+
+
 #### Normal Running a function
 ```go
 statment1
@@ -40,3 +56,24 @@ The scheduler also gets the opportunity for contexts switch on below events too
 this way deadlocks and race conditons are avoided. Infact go believes in the mantra
 "Don't share memory
 for communication, instead share memory by communicating"
+
+
+
+```go
+package main
+
+import (
+	"fmt"
+	"runtime"
+)
+
+func main() {
+
+    // NumCPU returns the number of logical
+    // CPUs usable by the current process.
+    fmt.Println(runtime.NumCPU())
+}
+```
+
+
+
